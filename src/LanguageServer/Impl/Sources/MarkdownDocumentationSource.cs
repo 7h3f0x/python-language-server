@@ -65,7 +65,7 @@ namespace Microsoft.Python.LanguageServer.Sources {
                         className = "class " + cls.Name;
                     }
 
-                    text = $"```\n{className}{sig}\n```{clsDoc}";
+                    text = $"```python\n{className}{sig}\n```{clsDoc}";
                     break;
 
                 case IPythonModule mod:
@@ -97,14 +97,14 @@ namespace Microsoft.Python.LanguageServer.Sources {
         private string GetPropertyString(IPythonPropertyType prop) {
             var decTypeString = prop.DeclaringType != null ? $"{prop.DeclaringType.Name}." : string.Empty;
             var propDoc = !string.IsNullOrEmpty(prop.Documentation) ? $"\n---\n{prop.MarkdownDoc()}" : string.Empty;
-            return $"```\n{decTypeString}\n```{propDoc}";
+            return $"```python\n{decTypeString}\n```{propDoc}";
         }
 
         private string GetFunctionString(IPythonFunctionType ft, IPythonType self, int overloadIndex = 0) {
             var sigString = GetSignatureString(ft, self, out _, overloadIndex);
             var decTypeString = ft.DeclaringType != null ? $"{ft.DeclaringType.Name}." : string.Empty;
             var funcDoc = !string.IsNullOrEmpty(ft.Documentation) ? $"\n---\n{ft.MarkdownDoc()}" : string.Empty;
-            return $"```\n{decTypeString}{sigString}\n```{funcDoc}";
+            return $"```python\n{decTypeString}{sigString}\n```{funcDoc}";
         }
     }
 }
