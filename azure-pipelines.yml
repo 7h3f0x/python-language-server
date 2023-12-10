@@ -1,7 +1,3 @@
-# Pipeline for publishing nuget packages
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 # build number format
 name: $(VersionMajorMinor)$(VersionPatchCounter)
 
@@ -13,7 +9,7 @@ trigger:
 
 
 pool:
-  name: VSEngSS-MicroBuild2019
+  name: VSEngSS-MicroBuild2019-1ES
 
 # Need a job for win-x86,win-x64,osx-x64,linux-x64,any
 jobs:
